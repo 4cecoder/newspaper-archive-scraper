@@ -90,7 +90,7 @@ code runs in the extension, the CLI, and the tests.
 GitHub Actions keeps the repo honest and serves the delivery site:
 
 - `.github/workflows/ci.yml` — install, build both extensions, run unit/package tests, build the site
-- `.github/workflows/pages.yml` — deploys `web/out/` to GitHub Pages at `https://<user>.github.io/newspaper-archive-scraper/`
+- `.github/workflows/pages.yml` — builds the site and force-pushes `web/out/` to the `gh-pages` branch, which GitHub Pages serves at `https://<user>.github.io/newspaper-archive-scraper/`
 
 The download zips live in `web/public/downloads/` and ship with the site, so the
 customer always gets the current build from the landing page.
