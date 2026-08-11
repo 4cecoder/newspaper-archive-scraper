@@ -69,3 +69,10 @@ setTimeout(() => {
     /* background not reachable yet — fine */
   }
 }, 250);
+
+// Expose the extension id so tooling/tests can discover it from the page DOM.
+try {
+  document.documentElement.setAttribute("data-ext-id", api.runtime.id);
+} catch {
+  /* non-fatal */
+}

@@ -60,12 +60,24 @@ describe("chrome extension (live e2e)", () => {
         if (ct.includes("application/pdf") && r.url().includes("staticpdf")) pdfProbes.push(r.url());
       });
 
-      // Open the archive issue — the content script wakes the background worker.
+      // Open the archive issue — the content script stamps data-ext-id on <html>.
       await archive.goto(ISSUE_URL, { waitUntil: "domcontentloaded" });
-      const extId = await waitForServiceWorker(context);
 
+      let extId: string | undefined;
+      for (let i = 0; i < 80; i++) {
+        extId = await archive.evaluate(
+          () => document.documentElement.getAttribute("data-ext-id") ?? undefined,
+        );
+        if (extId) break;
+        await new Promise((r) => setTimeout(r, 250));
+      }
+      if (!extId) throw new Error("content script did not expose the extension id");
+
+      // Opening an extension page deterministically starts the background
+      // service worker (MV3); verify it matches the discovered extension id.
       const popup = await context.newPage();
       await popup.goto(`chrome-extension://${extId}/popup.html`);
+      expect(await waitForServiceWorker(context)).toBe(extId);
 
       await popup.evaluate(
         async (opts) => {
