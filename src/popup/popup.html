@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Reveal Digital Archive Downloader</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div>
+            <h1>Archive Downloader</h1>
+            <p class="brand-sub">Reveal Digital newspapers</p>
+          </div>
+        </div>
+        <span id="status-pill" class="pill pill-idle">Ready</span>
+      </header>
+
+      <section class="modes" aria-label="Download scope">
+        <label class="mode-card mode-selected" data-mode="all">
+          <input type="radio" name="mode" value="all" checked />
+          <span class="mode-title">Everything</span>
+          <span class="mode-sub">All newspapers in the archive</span>
+        </label>
+        <label class="mode-card" data-mode="publication" id="mode-publication">
+          <input type="radio" name="mode" value="publication" disabled />
+          <span class="mode-title">This newspaper</span>
+          <span class="mode-sub">Every issue of the newspaper you're viewing</span>
+        </label>
+        <label class="mode-card" data-mode="issue" id="mode-issue">
+          <input type="radio" name="mode" value="issue" disabled />
+          <span class="mode-title">This issue</span>
+          <span class="mode-sub">Just the issue you're viewing</span>
+        </label>
+      </section>
+
+      <p id="mode-hint" class="hint" hidden>
+        Open a Reveal Digital newspaper page to unlock these options.
+      </p>
+
+      <label class="toggle-row">
+        <input type="checkbox" id="only-public" />
+        <span>Skip login-only issues</span>
+      </label>
+
+      <section class="controls">
+        <button id="btn-start" class="btn btn-primary">Start download</button>
+        <div class="secondary-row">
+          <button id="btn-open" class="link-btn">Open archive site</button>
+          <button id="btn-reset" class="link-btn link-danger">Start over</button>
+        </div>
+      </section>
+
+      <p id="flash" class="flash" hidden></p>
+
+      <section class="progress-area">
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <div class="progress-meta">
+          <span id="progress-label">Ready to download</span>
+          <span id="progress-pct">0%</span>
+        </div>
+        <div class="counts">
+          <span class="count count-ok" id="count-downloaded" title="Pages saved to your Downloads folder">0 saved</span>
+          <span class="count" id="count-skipped" title="Issues you already downloaded">0 already have</span>
+          <span class="count count-warn" id="count-blocked" title="Pages that need a library login">0 login-only</span>
+          <span class="count count-bad" id="count-failed" title="Pages that could not be saved">0 failed</span>
+        </div>
+      </section>
+
+      <section class="log-area">
+        <div class="log-title">Recent activity</div>
+        <ul id="log-list" class="log-list"></ul>
+      </section>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

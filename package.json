@@ -1,0 +1,22 @@
+{
+  "name": "newspaper-archive-scraper",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "login": "bun run cli/cli.ts login",
+    "scrape": "bun run cli/cli.ts scrape",
+    "build": "bun run scripts/build.ts",
+    "build:extension": "bun run scripts/build.ts --extension-only",
+    "icons": "bun run scripts/icons.ts",
+    "test": "bun test test/core.test.ts",
+    "test:live": "LIVE=1 bun test test/live-cli.test.ts",
+    "test:e2e": "E2E=1 bun test test/e2e/chrome.test.ts",
+    "web": "bun run --cwd web dev",
+    "web:build": "bun run --cwd web build",
+    "web:preview": "bun run --cwd web preview"
+  },
+  "dependencies": {
+    "playwright": "^1.50.0"
+  }
+}

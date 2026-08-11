@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  /* Ink navy — the "newsprint at midnight" palette */
+  --color-ink-950: #070d19;
+  --color-ink-900: #0b1626;
+  --color-ink-800: #101f36;
+  --color-ink-700: #1a2f4e;
+
+  /* Aged-paper cream */
+  --color-cream-50: #f8f1dd;
+  --color-cream-200: #e9dfc2;
+  --color-cream-400: #c3b591;
+
+  /* Gold accent */
+  --color-gold-300: #ecd48b;
+  --color-gold-400: #d9b64a;
+  --color-gold-500: #c9a227;
+  --color-gold-700: #96771f;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-display: var(--font-playfair-display), Georgia, "Times New Roman",
+    serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink-900);
+  color: var(--color-cream-50);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-gold-400);
+  color: var(--color-ink-950);
+}

@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - run: bun test test/core.test.ts test/e2e/packages.test.ts
+      - run: bun install --cwd web --frozen-lockfile
+      - name: Build site
+        run: bun run web:build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /newspaper-archive-scraper
+      - run: bun run --cwd web lint
+
+  e2e-chrome:
+    runs-on: ubuntu-latest
+    needs: build-test
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install --frozen-lockfile
+      - run: bunx playwright install chromium
+      - run: bun run build
+      - name: Live extension E2E (network)
+        run: E2E=1 bun test test/e2e/chrome.test.ts
