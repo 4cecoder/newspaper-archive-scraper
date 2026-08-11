@@ -34,7 +34,7 @@ export function HowToUseSection() {
           {steps.map((step, index) => (
             <div
               key={step.title}
-              className="relative rounded-2xl border border-white/10 bg-ink-800/60 p-6 transition-colors hover:border-gold-500/30 hover:bg-ink-800"
+              className="relative rounded-2xl border border-white/10 bg-ink-800/60 p-6 transition hover:-translate-y-0.5 hover:border-gold-500/30 hover:bg-ink-800"
             >
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-gold-400/10 font-display text-base font-bold text-gold-300">
                 {index + 1}

@@ -33,7 +33,7 @@ export function DownloadSection() {
           {browserDownloads.map((download) => (
             <article
               key={download.id}
-              className="flex flex-col rounded-2xl border border-white/10 bg-ink-800/60 p-6 transition-colors hover:border-gold-500/30 hover:bg-ink-800"
+              className="flex flex-col rounded-2xl border border-white/10 bg-ink-800/60 p-6 transition hover:-translate-y-0.5 hover:border-gold-500/30 hover:bg-ink-800 hover:shadow-lg hover:shadow-black/20"
             >
               <div className="flex items-start gap-4">
                 <BrowserBadge id={download.id} />
@@ -52,7 +52,7 @@ export function DownloadSection() {
                   <a
                     href={download.href}
                     download
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gold-400 px-4 py-3 text-sm font-semibold text-ink-950 transition-colors hover:bg-gold-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gold-400 px-4 py-3 text-sm font-semibold text-ink-950 transition hover:bg-gold-300 active:translate-y-px active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300"
                   >
                     <DownloadIcon className="h-4 w-4" />
                     Download for {download.name === "Google Chrome" ? "Chrome" : "Firefox"}

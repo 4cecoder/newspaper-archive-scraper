@@ -1,4 +1,5 @@
 import { CheckIcon, NewspaperMark } from "@/components/icons";
+import { WebGLBackdrop } from "@/components/webgl-backdrop";
 
 const benefits = [
   "Every page, saved as a PDF — one click per issue, nothing to copy or paste.",
@@ -9,29 +10,41 @@ const benefits = [
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
+      {/* Drifting WebGL aurora + paper dust */}
+      <WebGLBackdrop />
+
       {/* Soft gold glow behind the hero */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(70rem_35rem_at_50%_-5%,rgba(217,182,74,0.10),transparent_65%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(70rem_35rem_at_50%_-5%,rgba(217,182,74,0.10),transparent_65%)]"
       />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pb-20 pt-16 sm:px-6 sm:pt-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8 lg:pb-28 lg:pt-24">
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 pb-20 pt-16 sm:px-6 sm:pt-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8 lg:pb-28 lg:pt-24">
         <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-400/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">
+          <p className="animate-rise inline-flex items-center gap-2 rounded-full border border-gold-500/30 bg-gold-400/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold-300">
             A free browser extension
           </p>
 
-          <h1 className="mt-6 font-display text-4xl font-bold leading-[1.08] text-cream-50 sm:text-5xl lg:text-[3.4rem]">
+          <h1
+            className="animate-rise mt-6 font-display text-4xl font-bold leading-[1.08] text-cream-50 sm:text-5xl lg:text-[3.4rem]"
+            style={{ animationDelay: "80ms" }}
+          >
             Save hours of clicking — download whole newspapers with one click.
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream-200">
+          <p
+            className="animate-rise mt-6 max-w-xl text-lg leading-relaxed text-cream-200"
+            style={{ animationDelay: "160ms" }}
+          >
             Reveal Digital Archive Downloader turns every page of a Reveal
             Digital newspaper archive into PDFs — neatly filed by issue,
             straight into your Downloads folder.
           </p>
 
-          <ul className="mt-8 space-y-3.5">
+          <ul
+            className="animate-rise mt-8 space-y-3.5"
+            style={{ animationDelay: "240ms" }}
+          >
             {benefits.map((benefit) => (
               <li key={benefit} className="flex items-start gap-3">
                 <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-gold-400/15 text-gold-300">
@@ -44,16 +57,19 @@ export function Hero() {
             ))}
           </ul>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div
+            className="animate-rise mt-10 flex flex-wrap items-center gap-4"
+            style={{ animationDelay: "320ms" }}
+          >
             <a
               href="#download"
-              className="inline-flex items-center gap-2 rounded-lg bg-gold-400 px-6 py-3 text-base font-semibold text-ink-950 shadow-lg shadow-gold-500/20 transition-colors hover:bg-gold-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300"
+              className="inline-flex items-center gap-2 rounded-lg bg-gold-400 px-6 py-3 text-base font-semibold text-ink-950 shadow-lg shadow-gold-500/20 transition hover:bg-gold-300 active:translate-y-px active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300"
             >
               Get the extension
             </a>
             <a
               href="#install"
-              className="inline-flex items-center gap-2 rounded-lg border border-cream-200/25 px-6 py-3 text-base font-medium text-cream-50 transition-colors hover:border-gold-400/50 hover:text-gold-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
+              className="inline-flex items-center gap-2 rounded-lg border border-cream-200/25 px-6 py-3 text-base font-medium text-cream-50 transition hover:border-gold-400/50 hover:text-gold-300 active:translate-y-px active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
             >
               See how to install
             </a>
@@ -65,7 +81,10 @@ export function Hero() {
         </div>
 
         {/* Mockup of the extension popup */}
-        <div className="relative mx-auto w-full max-w-sm">
+        <div
+          className="animate-rise relative mx-auto w-full max-w-sm"
+          style={{ animationDelay: "200ms" }}
+        >
           <div
             aria-hidden="true"
             className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-gold-500/15 via-transparent to-transparent"

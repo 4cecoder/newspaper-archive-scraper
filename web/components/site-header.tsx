@@ -29,7 +29,7 @@ export function SiteHeader() {
             <a
               key={link.href}
               href={link.href}
-              className="transition-colors hover:text-gold-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-400"
+              className="relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold-300 after:transition-[width] after:duration-300 after:ease-out hover:text-gold-300 hover:after:w-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-400"
             >
               {link.label}
             </a>
@@ -38,7 +38,7 @@ export function SiteHeader() {
 
         <a
           href="#download"
-          className="inline-flex items-center gap-1.5 rounded-lg bg-gold-400 px-3.5 py-2 text-sm font-semibold text-ink-950 transition-colors hover:bg-gold-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 sm:px-4"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-gold-400 px-3.5 py-2 text-sm font-semibold text-ink-950 transition hover:bg-gold-300 active:translate-y-px active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 sm:px-4"
         >
           Get the extension
         </a>
